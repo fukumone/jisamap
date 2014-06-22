@@ -195,7 +195,7 @@ function addMarker(latLng, timeZone, map)
 
   //create marker
   var marker = new google.maps.Marker({
-    position:latLng,
+    position:latLng
   });
 
   //set event
@@ -208,6 +208,10 @@ function addMarker(latLng, timeZone, map)
 
   //open infowindow
   infowindow.open(map, marker);
+  window.onclick = function(){
+    marker.setMap(null);
+    infowindow.close(map, marker);
+  }
 }
 
 //initialize
