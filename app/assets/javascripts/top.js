@@ -55,7 +55,7 @@ function setClickEvent(map)
               addMarker(event.latLng, timeZone, map);
           } else {
               //error
-              alert('status:' + timeZone['status']);
+            alert('status:' + timeZone['status']);
           }
         }
     });
