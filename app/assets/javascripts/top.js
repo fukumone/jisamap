@@ -122,13 +122,22 @@ function getTimeStamp(time)
 
 function addMarker(latLng, timeZone, map)
 {
+  var jstTimeZone = new Date;
   var contentString =
       '<div class="content">' +
       '<p>' + '緯度経度:　' + latLng + '</p>' +
       '<p>' + 'タイムゾーンID:　' + timeZone['timeZoneId'] + '</p>' +
       '<p>' + 'タイムゾーン名:　' + timeZone['timeZoneName'] + '</p>' +
-      '<p>' + '時差:　' + timeZone['rawOffset']/3600 + '時間' + '</p>' +
+      '<p>' + '日本との時差:　' + (timeZone['rawOffset']/3600 - 9) + '時間' + '</p>' +
       '<p>' + 'サマータイムによる時差:　' + timeZone['dstOffset']/3600 + '時間' + '</p>' +
+      '<p>' + '現地時間: ' + jstTimeZone.getFullYear() + '年' + jstTimeZone.getDate() + '日' +
+      (jstTimeZone.getHours() + (timeZone['rawOffset']/3600 - 9)) + '時' + jstTimeZone.getMinutes() + '分' +
+      '(JST)' +
+
+      '<p>' + '日本時間: ' + jstTimeZone.getFullYear() + '年' + jstTimeZone.getDate() + '日' +
+      jstTimeZone.getHours() + '時' + jstTimeZone.getMinutes() + '分' +
+      '(JST)' +
+
       '</div>';
 
   //create infowindow
