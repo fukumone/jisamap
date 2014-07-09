@@ -1,3 +1,4 @@
 時差マップ
 
 時差を表示
+こちらから(http://jisamap.herokuapp.com/)
