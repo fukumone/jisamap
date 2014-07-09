@@ -90,6 +90,7 @@ function initialize() {
 function setClickEvent(map)
 {
   google.maps.event.addListener(map, 'click', function(event) {
+    var jstTimeZone = new Date;
     var requestUrl =
         'https://maps.googleapis.com/maps/api/timezone/' +
         'json' +
@@ -105,7 +106,15 @@ function setClickEvent(map)
         success: function(timeZone) {
           if (timeZone['status'] == 'OK') {
               //add marker
-              addMarker(event.latLng, timeZone, map);
+              addMarker(event.latLng, timeZone, map, jstTimeZone);
+              $.ajax({
+                url: 'top/document_time_zone/',
+                type: 'GET',
+                success: function(){
+                  $("#jstTimeZoneJapan").text(documentTimeZone(timeZone, jstTimeZone).japan);
+                  $("#jstTimeZoneForeign").text(documentTimeZone(timeZone, jstTimeZone).foreign);
+                }
+              });
           } else {
               //error
             alert('status:' + timeZone['status']);
@@ -120,9 +129,8 @@ function getTimeStamp(time)
   return Math.round(time / 1000);
 }
 
-function addMarker(latLng, timeZone, map)
+function addMarker(latLng, timeZone, map, jstTimeZone)
 {
-  var jstTimeZone = new Date;
   var contentString =
       '<div class="content">' +
       '<p>' + '緯度経度:　' + latLng + '</p>' +
@@ -165,6 +173,18 @@ function addMarker(latLng, timeZone, map)
     infowindow.close(map, marker);
   }
 }
+
+function documentTimeZone(timeZone, jstTimeZone){
+  var obj = {
+    foreign: '現地時間: ' + jstTimeZone.getFullYear() + '年' + jstTimeZone.getDate() + '日' +
+  (jstTimeZone.getHours() + (timeZone['rawOffset']/3600 - 9)) + '時' + jstTimeZone.getMinutes() + '分' +
+  '(JST)',
+    japan: '日本時間: ' + jstTimeZone.getFullYear() + '年' + jstTimeZone.getDate() + '日' +
+     jstTimeZone.getHours() + '時' + jstTimeZone.getMinutes() + '分' + '(JST)'
+  }
+  return obj;
+}
+
 
 //initialize
 
