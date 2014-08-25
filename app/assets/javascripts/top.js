@@ -185,7 +185,6 @@ function documentTimeZone(timeZone, jstTimeZone){
   return obj;
 }
 
-
 //initialize
 
 window.onload = function(){
