@@ -1,13 +1,3 @@
-GIT
-  remote: git://github.com/indirect/haml-rails.git
-  revision: 3112972c456256ae889164508cf5ffc8b8b706b6
-  specs:
-    haml-rails (0.5.3)
-      actionpack (>= 4.0.1)
-      activesupport (>= 4.0.1)
-      haml (>= 3.1, < 5.0)
-      railties (>= 4.0.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -48,8 +38,6 @@ GEM
     coffee-script-source (1.7.0)
     erubis (2.7.0)
     execjs (2.2.1)
-    haml (4.0.5)
-      tilt
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (2.1.2)
@@ -127,7 +115,6 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
-  haml-rails!
   jbuilder (~> 2.0)
   jquery-rails
   mysql2

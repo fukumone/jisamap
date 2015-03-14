@@ -87,8 +87,7 @@ function initialize() {
   setClickEvent(map);
 }
 
-function setClickEvent(map)
-{
+function setClickEvent(map){
   google.maps.event.addListener(map, 'click', function(event) {
     var jstTimeZone = new Date;
     var requestUrl =
@@ -124,13 +123,11 @@ function setClickEvent(map)
   });
 }
 
-function getTimeStamp(time)
-{
+function getTimeStamp(time){
   return Math.round(time / 1000);
 }
 
-function addMarker(latLng, timeZone, map, jstTimeZone)
-{
+function addMarker(latLng, timeZone, map, jstTimeZone){
   var contentString =
       '<div class="content">' +
       '<p>' + '緯度経度:　' + latLng + '</p>' +
